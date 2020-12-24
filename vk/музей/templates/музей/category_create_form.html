@@ -1,0 +1,44 @@
+{% extends 'музей/base_museum.html' %}
+
+{% block title %}
+    Добавление раздела в меню - {{ block.super}}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+        <div class="card-header">
+            Инструкция по добавлению категорий в каталог
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Данная форма позволяет добавлять, либо обновлять категории для в каталоге</p>
+                <hr class="my-4">
+                <p>Экспонаты разбивается на катнгории логически, например медалии, вымпелы, внутри каждой категории может быть подкатегория</p>
+                <hr class="my-4">
+                <p>1. В поле с названием Name вводится название добавляемой категории. Данное название должно быть уникальным</p>
+                <hr class="my-4">
+                <p>2. В поле ParenId необходимо выбрать категории внутри которой будет находиться добавляемая подкаетегория. Либо категориия не будет иметь родительской категории и бужет являться одной из корневых</p>
+                <hr class="my-4">
+                <p>3. Далее в поле с названием Description вводится описание добавлямой категории при необходимости</p>
+                <hr class="my-4">
+                <p>4. После проверки всех вводимых значений для сохранения категории необходимы нажать кнопку Добавить. При возникновении ошибки необходимо снова прочесть инструкцию. При успешным добавлении вы перейдете на новую старницу</p>
+            </blockquote>
+        </div>
+</div>
+    <form class="" action="{% url 'category_create_url' %}" method="POST">
+        {% csrf_token %}
+
+        {% for  field in form %}
+            <div class="form-group">
+                {% if field.errors %}
+                    <div class="allert allert-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+                {{ field.label }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit" name="button" class="btn btn-primary">Добавить раздел</button>
+    </form>
+{% endblock %}

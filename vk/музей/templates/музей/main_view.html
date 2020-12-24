@@ -1,0 +1,18 @@
+{% extends 'музей/base_museum.html' %}
+
+{% block title %}
+    Все экспонаты - {{ block.super}}
+{% endblock %}
+
+{% block content %}
+    <div class='container'>
+    <p class="h1">Каталог экспонатов музея ВУЦ РТУ МИРЭА</p>
+    <ul class="list-group list-group-horizontal">
+  <li class="list-group-item col-3">Шифр</li>
+  <li class="list-group-item col-3">Название экспоната</li>
+    </ul>
+        </div>
+    {% for item in items %}
+        {% include 'музей/includes/item_view_template.html' %}
+    {% endfor %}
+{% endblock %}

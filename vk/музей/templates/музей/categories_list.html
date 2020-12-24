@@ -1,0 +1,13 @@
+{% extends 'yaki/base_yaki.html' %}
+
+{% block title %}
+    Список блюд
+{% endblock %}
+
+{% block content %}
+    {% for category in categories %}
+        <h1>{{ category.name }}</h1>
+        <h2> {{ category.ancestor }} </h2>
+        <h3> {{ category.descedant }} </h3>
+    {% endfor %}
+{% endblock %}

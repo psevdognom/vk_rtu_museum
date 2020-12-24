@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <!-- <script src="{% static '/bootstrap/js/bootstrap.min.js' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <script src='{% static "/bootstrap/js/bootstrap.min.js" %}' type='text/javascript' crossorigin="anonymous"></script>
+    <script src='{% static "/bootstrap/js/jquery-3.3.1.slim.min.js" %}' type='text/javascript' crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <!-- <script src="{% static '/bootstrap/js/bootstrap.js' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.min.js.map' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.js' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.js.map' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js.map' %}" type='text/javascript' crossorigin="anonymous"></script>
+    <script src='{% static "/bootstrap/js/popper.min.js" %}' integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" type='text/javascript' crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.js' %}" type='text/javascript' crossorigin="anonymous"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    -->
+    <link rel="stylesheet" href='{% static "/bootstrap/css/bootstrap.min.css" %}'> 
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>
+        {% block title %}
+            Sklad
+        {% endblock %}
+    </title>
+</head>
+<body>
+  {% block nav %}
+  {% endblock %}
+              {% block content %}
+                There is no any content for you
+              {% endblock %}
+              {% if request.user.is_authenticated and request.user.is_staff %}
+              <div class="admin-panel align-items-center">
+                <a href="/admin" class="btn btn-outline-info">Admin</a>
+                {% block admin-panel %}
+                  <div class="btn-group">
+        <button type="button" class="btn">
+    Добавить
+        </button>
+        <a type="button" href="{% url 'category_create_url' %}" class="btn btn-outline-primary">Категорию</a>
+        <a type="button" href="{% url 'place_create_url' %}" class="btn btn-outline-primary">Место</a>
+        <a type="button" href="{% url 'item_create_url' %}" class="btn btn-outline-primary">Экспонат</a>
+    </div>
+    <a href="{{ admin_object.get_update_url }}" class="btn btn-light edit" style="{% if detail  %}display: block;{% endif %}">Изменить</a>
+    <a href="{{ admin_object.get_delete_url }}" class="btn btn-danger delete" style="{% if detail  %}display: block;{% endif %}">Удалить</a>
+                {% endblock %}
+              </div>
+              {% endif %}
+</body>
+</html>

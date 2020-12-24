@@ -1,0 +1,58 @@
+.admin-panel {
+    border: 1px solid #999;
+    border-radius: : 2px;
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+    opacity: 0.3;
+    padding: 15px; 
+}
+
+.admin-panel:hover {
+    opacity: 1;
+}
+
+.admin-panel a {
+    display: block;
+    margin: 5px 0;
+}
+
+a.edit, a.delete {
+    display: none;
+}
+
+.nav-panel {
+    border: 1px solid #999;
+    border-radius: : 2px;
+    position: fixed;
+    top: 20px;
+    right: 50px;
+    opacity: 0.3;
+    padding: 15px; 
+}
+
+.nav-panel:hover {
+    opacity: 1;
+}
+
+.nav-panel a {
+    display: block;
+    margin: 5px 0;
+}
+
+
+
+
+.pdfobject-container { 
+    height: 30rem; 
+    border: 1rem solid rgba(0,0,0,.1); 
+}
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+

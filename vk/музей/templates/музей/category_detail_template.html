@@ -1,0 +1,12 @@
+{% extends  'музей/base_museum.html'%}
+
+{% block title %}
+    {{ category.name }}
+{% endblock %}
+{% block content %}
+<div class='container'>
+    <p class="h1">Экспонаты в данной категории</p>
+    {% for item in category.item.all %}
+        {% include 'музей/includes/item_view_template.html' %}
+    {% endfor %}
+{% endblock %}

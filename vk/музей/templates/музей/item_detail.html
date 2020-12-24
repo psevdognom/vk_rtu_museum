@@ -1,0 +1,38 @@
+{% extends 'музей/base_museum.html' %}
+
+{% block title %}
+    Экспонат {{ item.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+<div class="card col-12"> 
+  <h3 class="card-title" style="text-align:center">Учетная карточка</h3>
+{% ifequal item.image None %}
+    <p></p>
+{% else %}
+<img src="{{ item.image.url }}" class="card-img-top" alt="Изображение"/>
+{% endifequal %}
+  <div class="card-body" id="parent">
+    {% if item.mark %}
+    <h3 class="card-subtitle"> Шифр: {{ item.mark }}<h3>
+    {% endif %}
+    {% if item.description != '' %} 
+    <h4 class="card-text">Описание: {{ item.description }}</h4>
+    {% endif %}
+    {% if item.state != '' %} 
+    <h4 class="card-text">Текущее состояние: {{ item.state }}</h4>
+    {% endif %}
+    {% if item.material != '' %} 
+    <h4 class="card-text">Состав: {{ item.material }}</h4>
+    {% endif %}
+    {% if item.getting != '' %} 
+    <h4 class="card-text">Метод получения: {{ item.getting }}</h4>
+    {% endif %}
+    {% if item.year != '' %} 
+    <h4 class="card-text">Год: {{ item.year }}</h4>
+    {% endif %}
+  </div>
+</div>
+</div>
+{% endblock %}

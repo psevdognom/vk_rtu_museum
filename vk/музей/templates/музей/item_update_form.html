@@ -1,0 +1,49 @@
+{% extends 'музей/base_museum.html' %}
+
+{% block title %}
+    Добавление экспонатов - {{ block.super}}
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            Инструкция по добавлению мест в каталог
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Данная форма позволяет добавлять, либо обновлять экспонаты в каталоге</p>
+                <hr class="my-4">
+                <p>1. В поле с названием Name вводится название добавляемого экспоната. Данное название должно быть уникальным</p>
+                <hr class="my-4">
+                <p>2. В поле с названием Mark вводится шифр добавляемого экспоната. Данное название должно быть уникальным</p>
+                <hr class="my-4">
+                <p>3. В поле Image необходимо загрузить фотографию. Доступны форматы png, jpeg и другие</p>
+                <hr class="my-4">
+                <p>4. Далее в поле с названием Description вводится описание добавляемого экспоната при необходимости</p>
+                <hr class="my-4">
+                <p>5. В поле с названием Category необходимо выбрать категорию, к которой относится данный экспонат, либо выбрать Без категории</p>
+                <hr class="my-4">
+                <p>6. В поле с названием Place необходимо выбрать место в котором находится данный экспонат</p>
+                <hr class="my-4">
+                <p>7. Далее Вы можете заполнить остальные поля при наличие данных сведенй, таких как материал, способ получения, состояние</p>
+                <hr class="my-4">
+                <p>8. После проверки всех вводимых значений для сохранения места необходимы нажать кнопку Добавить Экспонат. При возникновении ошибки необходимо снова прочесть инструкцию. При успешным добавлении вы перейдете на новую старницу</p>
+            </blockquote>
+            </div>
+    </div>
+    <form class="" action="{{ item.get_update_url }}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {% for  field in form %}
+            <div class="form-group">
+                {% if field.errors %}
+                    <div class="allert allert-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+                {{ field.label }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit" name="button" class="btn btn-primary">Добавить экспонат</button>
+    </form>
+{% endblock %}

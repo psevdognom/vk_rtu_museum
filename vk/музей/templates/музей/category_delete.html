@@ -1,0 +1,19 @@
+{% extends  'музей/base_museum.html'%}
+
+{% block title %}
+    {{ category.name }}
+{% endblock %}
+
+{% block content %}
+    <form action="{{ category.get_delete_url }}" method = "POST">
+        {% csrf_token %}
+
+        <h3>
+            Вы действительно хотите удалить данную категорию <b> {{category.name }}</b> ?
+        </h3>
+        <a href="{{ category.get_absolute_url }}">Отмена</a>
+        <button type = "submit" name="button" class="btn btn-danger">
+            удалить
+        </button>
+    </form>
+{% endblock %}

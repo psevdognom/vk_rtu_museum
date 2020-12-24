@@ -1,0 +1,15 @@
+{% extends "музей/base_museum.html" %}
+
+{% block content %}
+        <form action="{{ item.get_delete_url }}" method = "POST">
+        {% csrf_token %}
+
+        <h3>
+            Вы действительно хотите удалить данный экспонат <b> {{ item.name }}</b>?
+        </h3>
+        <a href="{{ item.get_absolute_url }}">Отменить</a>
+        <button type = "submit" name="button" class="btn btn-danger">
+            Удалить
+        </button>
+    </form>
+{% endblock %}
